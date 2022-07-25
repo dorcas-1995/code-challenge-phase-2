@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
-import Favorites from "./Favorites";
+import Favorites from "../components/Favourites";
 
 
 function App() {
