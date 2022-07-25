@@ -7,6 +7,14 @@ function Poem({ title, author, content, onClickDeleteButton, poem }) {
   function handleMarkAsReadButton() {
     setIsRead((isRead) => !isRead);
   }
+
+  function handleDeleteButton() {
+    fetch(`http://localhost:8004/poems/${poem.id}`, {
+      method: "DELETE",
+    })
+      .then((r) => r.json())
+      .then(() => onClickDeleteButton(poem));
+  }
   
   return (
     <div>
