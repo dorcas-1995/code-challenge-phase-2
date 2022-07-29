@@ -1,40 +1,65 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
+function Poem({ poem, onDeletePoem }) {
 
-function Poem({ title, author, content, onClickDeleteButton, poem }) {
+  const { id, title, content, author } = poem;
 
-  const [isRead, setIsRead] = useState(false);
+  const [ isRead, setisRead ] = useState(false);
 
-  function handleMarkAsReadButton() {
-    setIsRead((isRead) => !isRead);
-  }
+  const toggleRead = () => {
 
-  function handleDeleteButton() {
-    fetch(`http://localhost:8004/poems/${poem.id}`, {
+    setisRead((isRead) => !isRead);
+
+  };
+
+  function onClickDelete() {
+
+    fetch(`http://localhost:8004/poems/${id}`, {
+
       method: "DELETE",
+
     })
+
       .then((r) => r.json())
-      .then(() => onClickDeleteButton(poem));
+
+      .then(() => {
+
+        onDeletePoem(id);
+
+      });
+
   }
 
   return (
+
     <div>
+
       <h3>{title}</h3>
 
-      <p style={isRead ? { color: "gray" } : { color: "black" }}>{content}</p>
+      <p>{content}</p>
 
       <p>
-        <strong>- By {author}</strong>
+
+        <strong>- {author}</strong>
+
       </p>
-      <button onClick={handleMarkAsReadButton}>
-        {isRead ? "Mark as unread" : "Mark as read"}
+
+      <button onClick={toggleRead}>
+
+        {isRead ? "Mark as Unread" : "Mark as Read"}
+
       </button>
-      <button className="remove" onClick={handleDeleteButton}>
-        DELETE
+
+      <button onClick={onClickDelete} style={{ marginLeft: "10px" }}>
+
+        Delete Poem
+
       </button>
-      
+
     </div>
+
   );
+
 }
 
-export default Poem;
+export default Poem

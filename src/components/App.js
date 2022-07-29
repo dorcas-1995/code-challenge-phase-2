@@ -3,13 +3,10 @@ import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
 
 
-
 function App() {
-
   const [poems, setPoems] = useState([]);
   const [isShowing, setIsShowing] = useState(true);
-  const [favorites, setFavorites] = useState([]);
-
+  
 
   
   const POEMS = "http://localhost:8004/poems";
@@ -25,20 +22,20 @@ function App() {
       });
   }, []);
 
-console.log(poems)
-
-  
+ 
   function handleDeletePoem(deletedPoem) {
     const updatedPoems = poems.filter((poem) => poem.id !== deletedPoem.id);
     console.log(updatedPoems);
     setPoems(updatedPoems);
   }
 
+  
   function handleClick() {
     setIsShowing((isShowing) => !isShowing);
   }
 
-   function updatePoems(newPoem) {
+  
+  function updatePoems(newPoem) {
     setPoems([...poems, newPoem]);
   }
 
@@ -53,7 +50,7 @@ console.log(poems)
           {isShowing ? "Hide new poem form" : "Show new poem form"}
         </button>
         {isShowing ? <NewPoemForm onAddNewPoem={updatePoems} /> : null}
-        
+       
       </div>
 
       <PoemsContainer
