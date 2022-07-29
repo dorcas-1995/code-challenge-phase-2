@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
-import Favorites from "../components/Favourites";
+
 
 
 function App() {
@@ -25,6 +25,7 @@ function App() {
       });
   }, []);
 
+console.log(poems)
 
   
   function handleDeletePoem(deletedPoem) {
@@ -52,9 +53,7 @@ function App() {
           {isShowing ? "Hide new poem form" : "Show new poem form"}
         </button>
         {isShowing ? <NewPoemForm onAddNewPoem={updatePoems} /> : null}
-        <div>
-          <Favorites favs={favorites} />
-        </div>
+        
       </div>
 
       <PoemsContainer

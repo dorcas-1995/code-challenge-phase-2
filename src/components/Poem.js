@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useState} from "react";
+
 
 function Poem({ title, author, content, onClickDeleteButton, poem }) {
 
@@ -31,7 +32,7 @@ function Poem({ title, author, content, onClickDeleteButton, poem }) {
       <button className="remove" onClick={handleDeleteButton}>
         DELETE
       </button>
-      <button className="favorites">Add To Favorites</button>
+      
     </div>
   );
 }
